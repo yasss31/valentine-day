@@ -557,6 +557,22 @@
             background: #128C7E;
             transform: scale(1.05);
         }
+        /* GAYA TOMBOL 'ENGGAK' */
+        .btn-no {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            position: absolute; /* Wajib absolute biar bisa dipindah */
+        }
+
+        .btn-no:hover {
+            background: #ffe6ea; /* Warna pink muda pas disentuh */
+        }
     </style>
 </head>
 <body>
@@ -649,7 +665,28 @@
                 <button class="btn" onclick="nextPage('page-story', 'page-letter')">Ada Surat Nih 💌</button>
             </div>
         </section>
-
+        <section id="page-ask-love" class="screen" style="display: none;">
+            <div class="glass-card">
+                <h2>Jelita Sayang... ❤️</h2>
+                <p>Sebelum lanjut, aku mau tanya serius nih.</p>
+                <br>
+                <p style="font-size: 1.3rem; font-weight: bold; color: #d46a7e;">
+                    Kamu Masih Sayang Nggak Sama Aku? 🤨
+                </p>
+                <br>
+                
+                <div style="position: relative; height: 100px; display: flex; justify-content: center; align-items: center; gap: 20px;">
+                    
+                    <button class="btn" onclick="nextPage('page-ask-love', 'page-letter')">
+                        Sayang Banget! 😍
+                    </button>
+                    
+                    <button id="btn-no" class="btn-no" onmouseover="moveButton()" onclick="moveButton()">
+                        Enggak 😜
+                    </button>
+                </div>
+            </div>
+        </section>
         <section id="page-letter" class="screen">
             <div class="glass-card">
                 <h2>Buat Jelita ❤️</h2>
@@ -819,16 +856,15 @@ iloveeyouu sayaangg
             const errorMsg = document.getElementById('login-error');
 
             if (nameInput === VALID_NAME && passInput === VALID_PASS) {
-                // LOGIN BERHASIL
                 errorMsg.style.display = 'none';
-                
-                // NYALAKAN MUSIK DISINI
                 playMusic(); 
+                
+                // --- PERUBAHAN DI SINI ---
+                // Pindah ke 'page-ask-love', BUKAN 'page-letter'
+                nextPage('page-login', 'page-ask-love'); 
+                // -------------------------
 
-                // PINDAH KE SURAT CINTA
-                nextPage('page-login', 'page-letter'); 
             } else {
-                // LOGIN GAGAL
                 errorMsg.style.display = 'block';
                 errorMsg.innerText = "Nama atau Password salah sayang 😢";
                 shakeInput();
