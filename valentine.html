@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spesial Buat Jelita ❤️</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           CSS VARIABLES & RESET
+           ========================================= */
+        :root {
+            --primary: #d46a7e;       /* Soft Rose */
+            --secondary: #ff9a9e;     /* Pink Pastel */
+            --bg-color: #fdfbf7;      /* Warm Ivory */
+            --text-main: #5d4037;     /* Warm Brown */
+            --glass-bg: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.7);
+            --shadow: 0 8px 32px 0 rgba(212, 106, 126, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Background Animated Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.7;
+            animation: floatBlob 10s infinite alternate;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 400px; height: 400px; background: #fad0c4; }
+        .blob-2 { bottom: -10%; right: -10%; width: 350px; height: 350px; background: #ff9a9e; }
+        .blob-3 { top: 40%; left: 40%; width: 300px; height: 300px; background: #fbc2eb; animation-delay: -5s; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(20px, -20px) scale(1.1); }
+        }
+
+        /* =========================================
+           CONTAINER & GLASSMORPHISM
+           ========================================= */
+        .container {
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(20px);
+        }
+
+        .screen.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            /* Penting untuk tombol lari-lari */
+            min-height: 300px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Typography */
+        h1, h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #7a5c5c;
+        }
+
+        /* Buttons & Inputs */
+        .btn {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 106, 126, 0.3);
+            font-family: 'Poppins', sans-serif;
+            margin-top: 10px;
+            position: relative; /* Default position */
+            z-index: 10;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 106, 126, 0.4);
+        }
+
+        /* Tombol Khusus 'Ngga' */
+        #btn-no {
+            background: #e0e0e0;
+            color: #777;
+            box-shadow: none;
+            transition: top 0.3s ease, left 0.3s ease; /* Animasi perpindahan */
+            position: relative; /* Posisi awal */
+            z-index: 100; /* Supaya selalu di atas teks */
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.6);
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: 0.3s;
+            color: var(--text-main);
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.9);
+        }
+
+        .error-msg {
+            color: #d32f2f;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            min-height: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* =========================================
+           SPECIFIC PAGE STYLES
+           ========================================= */
+        
+        /* Envelope Animation */
+        .envelope-wrapper {
+            position: relative;
+            width: 250px;
+            height: 180px;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .envelope-wrapper:hover { transform: scale(1.05); }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #ff8fa3;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .envelope::before { /* Flap */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ff7eb3;
+            clip-path: polygon(0 0, 100% 0, 50% 55%);
+            z-index: 4;
+            transform-origin: top;
+            transition: transform 0.6s 0.4s ease;
+        }
+        .envelope.open::before {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+        .paper {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 3;
+            transition: transform 0.6s ease;
+        }
+        .envelope.open .paper {
+            transform: translateY(-120px);
+            z-index: 5;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .heart-seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -80%);
+            font-size: 30px;
+            z-index: 5;
+            color: #fff;
+            transition: opacity 0.4s;
+        }
+        .envelope.open .heart-seal { opacity: 0; }
+
+        /* Modal Surat */
+        .modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        .modal.show { opacity: 1; pointer-events: all; }
+        .modal-content {
+            background: #fffafa;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            border-radius: 15px;
+            padding: 30px;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px rgba(255,255,255,0.8);
+        }
+        .letter-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #444;
+            white-space: pre-line;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        /* Mini Game */
+        .game-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .game-card {
+            background: rgba(255,255,255,0.7);
+            height: 100px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .game-card:hover { transform: scale(1.05); border-color: var(--secondary); }
+
+        /* Gift Box */
+        .gift-box {
+            font-size: 80px;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            margin: 30px 0;
+            transition: transform 0.2s;
+        }
+        .gift-box:active { transform: scale(0.9); }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        .hidden-gift {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        /* Music Control */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 50;
+            font-size: 1.2rem;
+            border: 1px solid white;
+        }
+        /* CSS PUZZLE GAME */
+        #puzzle-board {
+            width: 300px;
+            height: 300px;
+            margin: 10px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3x3 Grid */
+            grid-template-rows: repeat(3, 1fr);
+            gap: 2px;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .puzzle-piece {
+            background-image: url('foto-puzzle.jpg'); /* FOTO KAMU */
+            background-size: 300px 300px; /* Harus sama dengan ukuran board */
+            background-repeat: no-repeat;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        /* Potongan kosong */
+        .puzzle-piece.empty {
+            background: none;
+            cursor: default;
+            border: 1px dashed rgba(0,0,0,0.1);
+            box-shadow: none;
+        }
+        /* CSS UNTUK QUIZ */
+        .quiz-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .quiz-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 106, 126, 0.3);
+        }
+
+        .quiz-btn.wrong {
+            background: #ffcccc;
+            border-color: red;
+            color: red;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+        /* GAYA TOMBOL MUSIK POJOK KANAN ATAS */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999; /* Supaya selalu di paling atas */
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+            animation: pulseMusic 2s infinite;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulseMusic {
+            0% { box-shadow: 0 0 0 0 rgba(212, 106, 126, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 106, 126, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 106, 126, 0); }
+        }
+        /* --- PERBAIKAN CSS RATING --- */
+        .rating-box {
+            background: rgba(255, 255, 255, 0.8); /* Lebih putih dikit biar kontras */
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px auto; /* Auto biar tengah */
+            position: relative;
+            z-index: 100; /* Supaya dia muncul paling atas & bisa diklik */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 300px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Jarak antar bintang lebih lega */
+            font-size: 2.5rem; /* Bintang lebih besar */
+            margin: 10px 0;
+        }
+
+        .star {
+            color: #ccc; /* Warna dasar abu-abu */
+            cursor: pointer; /* Ubah kursor jadi tangan */
+            transition: transform 0.2s, color 0.2s;
+            position: relative;
+            z-index: 101; /* Pastikan bintang di atas box */
+            user-select: none; /* Biar ga ke-blok biru pas diklik */
+        }
+
+        /* Efek pas Mouse diarahkan (Hover) */
+        .star:hover {
+            transform: scale(1.3);
+            color: #ffeba7; /* Kuning muda pas disentuh */
+        }
+
+        /* Kelas aktif (Kuning Emas) */
+        .star.selected {
+            color: #FFD700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            transform: scale(1.1);
+        }
+        /* GAYA KOTAK PESAN WA */
+        .message-box {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .message-box textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 2px solid #ffc1cc;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-family: 'Poppins', sans-serif;
+            resize: none; /* Biar gabisa ditarik-tarik */
+        }
+
+        .message-box textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-wa {
+            background: #25D366; /* Warna Hijau WA */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        .btn-wa:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()">
+        🔊
+    </div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <audio id="bg-music" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-btn" onclick="toggleMusic()">🎵</div>
+
+    <div class="container">
+
+        <section id="page-login" class="screen active">
+            <div class="glass-card">
+                <h1>Login Dulu Cantik ❤️</h1>
+                <p>Website ini private bangett, cuma bidadari yang punya aksesnya wkwk.</p>
+                
+                <div class="input-group">
+                    <label>Nama Lengkap Kamu</label>
+                    <input type="text" id="input-name" placeholder="Nama paling indah sedunia..." autocomplete="off">
+                </div>
+                
+                <div class="input-group">
+                    <label>Password Rahasia</label>
+                    <input type="password" id="input-pass" placeholder="apaa hayoooo">
+                </div>
+
+                <p id="login-error" class="error-msg">Eits salahh, coba ingett lagii tanggal jadian kitaa 😝</p>
+                
+                <button class="btn" onclick="handleLogin()">Masuk Sayang ❤️</button>
+            </div>
+        </section>
+
+        <section id="page-ask-love" class="screen">
+            <div class="glass-card" id="card-love">
+                <div style="font-size: 3rem;">🤨</div>
+                <h2>Pertanyaan Penting!</h2>
+                <p>Jawab jujur yaaa dari hati yang paling dalem...</p>
+                <h3>Kamu masih sayang aku ngga??</h3>
+                
+                <div style="margin-top: 20px; width: 100%; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <button class="btn" onclick="nextPage('page-ask-love', 'page-welcome')">Masihh Dongg Sayang ❤️</button>
+                    
+                    <br>
+                    
+                    <button class="btn" id="btn-no" onmouseover="moveButton(this)" onclick="moveButton(this)">Ngga 😝</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-welcome" class="screen">
+            <div class="glass-card">
+                <h1>Haloo Sayangkuuu! ✨</h1>
+                <p>Akhirnya login juga hehe. Aku bikin sesuatu nihh iseng-iseng buat kamu.</p>
+                <div style="font-size: 3rem; margin: 20px 0;">🌹</div>
+                <p>Semoga suka yaa! Jangan di-close duluu, liat sampe akhir okeii? Aku udah niat banget nih wkwk.</p>
+                <button class="btn" onclick="nextPage('page-welcome', 'page-about')">Okeii Lanjut!</button>
+            </div>
+        </section>
+
+        <section id="page-about" class="screen">
+            <div class="glass-card">
+                <h2>Kenapa aku sayang kamu?</h2>
+                <p>Jujur bingung kalo disuruh jelasin semua, tapi intinya...</p>
+                <ul style="list-style: none; text-align: left; padding: 0 15px;">
+                    <li style="margin-bottom: 10px;">✨ Kamu tuh <b>wanita hebat</b>, aku bangga banget liat usaha kamu.</li>
+                    <li style="margin-bottom: 10px;">💖 Kamu <b>sabar</b> banget ngadepin aku (makasih yaa).</li>
+                    <li style="margin-bottom: 10px;">🌸 <b>Cantik</b> bangettt, ga ngerti lagi deh 😍.</li>
+                </ul>
+                <p style="margin-top: 15px;">Pokoknya aku bersyukur banget ketemu kamu, Je.</p>
+                <button class="btn" onclick="nextPage('page-about', 'page-story')">Lanjut lagii 👉</button>
+            </div>
+        </section>
+
+        <section id="page-story" class="screen">
+            <div class="glass-card">
+                <h2>Kita tuh...</h2>
+                <p>Mungkin perjalanan kita ga mulus-mulus amat yaa. Ada berantemnya, ada capeknya, namanya juga lagi "masa pertumbuhan" kan ya? wkwk.</p>
+                <p>Tapi liat deh, kita masih disini, masih sama-sama. Itu yang paling penting buat aku.</p>
+                <p>Makasih yaa udah mau berjuang bareng aku terus.</p>
+                <button class="btn" onclick="nextPage('page-story', 'page-letter')">Ada Surat Nih 💌</button>
+            </div>
+        </section>
+
+        <section id="page-letter" class="screen">
+            <div class="glass-card">
+                <h2>Buat Jelita ❤️</h2>
+                <p>Baca pelan-pelan yaa, ini dari hati aku yang paling dalem (asekk)..</p>
+                
+                <div class="envelope-wrapper" onclick="openLetter()">
+                    <div class="envelope" id="envelope">
+                        <div class="heart-seal">❤️</div>
+                        <div class="paper">
+                            <p style="font-size: 10px; color: #aaa;">Klik buat buka...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="font-size: 0.8rem; margin-top: 10px;">(Pencet amplopnya sayang)</p>
+            </div>
+        </section>
+
+        <section id="page-gametrans" class="screen">
+            <div class="glass-card">
+                <div style="font-size: 3rem;">🎮</div>
+                <h2>Main Game Dulu Yuk!</h2>
+                <p>Maiinn mini games duluu sayaangg biarr happy sayaangg 💕</p>
+                <p>Gampang kok sayaangg</p>
+                <button class="btn" onclick="nextPage('page-gametrans', 'page-game')">Gass Main!</button>
+            </div>
+        </section>
+
+        <section id="page-game" class="screen">
+            <div class="glass-card" style="max-width: 380px;">
+                <h2>Susun Foto Kita 🧩</h2>
+                <p>Ayo susun puzzle ini biar jadi foto kita yang utuh! Semangat sayang ❤️</p>
+                
+                <div id="puzzle-board"></div>
+
+                <p id="game-feedback" style="margin-top: 15px; font-weight: bold; min-height: 25px; font-size: 0.9rem; color: #d46a7e;">
+                    Geser kotaknya yaa...
+                </p>
+            </div>
+        </section>
+
+        <section id="page-quiz" class="screen">
+            <div class="glass-card">
+                <h2 id="quiz-title">Quiz Sayang 🧐</h2>
+                <p id="quiz-question" style="font-weight: bold; font-size: 1.1rem; margin-bottom: 20px;">
+                    Loading pertanyaan...
+                </p>
+                
+                <div id="quiz-options" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                    </div>
+
+                <p id="quiz-feedback" style="margin-top: 15px; color: #d46a7e; min-height: 20px; font-size: 0.9rem;"></p>
+            </div>
+        </section>
+
+        <section id="page-reward" class="screen">
+            <div class="glass-card">
+                <h2>Yeyy Selamat! 🎉</h2>
+                <p>Kamu emang cewee akuuu! Pinter banget jawabnya ❤️</p>
+
+                <div class="rating-box">
+                    <h3>Suka nggak hadiahnya? 🎁</h3>
+                    
+                    <div class="stars">
+                        <span class="star" onclick="giveRating(1)">★</span>
+                        <span class="star" onclick="giveRating(2)">★</span>
+                        <span class="star" onclick="giveRating(3)">★</span>
+                        <span class="star" onclick="giveRating(4)">★</span>
+                        <span class="star" onclick="giveRating(5)">★</span>
+                    </div>
+
+                    <p id="rating-text" style="font-size: 0.9rem; color: #d46a7e; margin-top: 10px; min-height: 20px;">
+                        (Klik bintangnya sayang...)
+                    </p>
+                </div>
+
+                <button class="btn" onclick="nextPage('page-reward', 'page-closing')" style="margin-top: 20px;">
+                    Peluk Aku 🤗
+                </button>
+            </div>
+        </section>
+
+        <section id="page-closing" class="screen">
+            <div class="glass-card">
+                <h1>I Love You</h1>
+                <h2>Jelita Nurul Afifah</h2>
+                <p>Semoga hari ini menyenangkan ya sayang.</p>
+                <p>Inget pesen aku tadi, tetep semangat & jadi wanita hebat kebanggaan aku.</p>
+                <br>
+                <p style="font-size: 0.8rem;">From: Cowokmu yang paling sayang kamu.</p>
+            </div>
+            <canvas id="confetti" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+            <div class="message-box">
+                <h3>💌 Kirim Pesan Buat Aku</h3>
+                <p>Ada yang mau disampein abis liat ini? Tulis sini ya cantik...</p>
+                
+                <textarea id="pesan-wa" placeholder="Tulis pesan sayang kamu disini..."></textarea>
+                
+                <button class="btn-wa" onclick="kirimKeWA()">
+                     Kirim sayaang ❤️
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="modal" id="letter-modal">
+        <div class="modal-content">
+            <span style="position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer;" onclick="closeLetter()">×</span>
+            <h2 style="text-align: center; font-size: 1.5rem;">💌 Surat Cinta</h2>
+            <hr style="border: 1px solid var(--secondary); margin-bottom: 15px;">
+            <div class="letter-text">
+happy valentine cewee akuu yangg palingg cantikkk yeayyy sukaa tidaak bunga nyaa sayaangg, first time iniii tauu ngasih bunga tapii maaff yaa sayaangg inii bungannyaa bukan yang asli sayaangg, disinii akuu bikinn website inii masii ada di paket sayaangg bunganya belumm akuu bukaa, semogaa ajaa sii sesuaii ekspetasii yaa sayaangg, maaf yaa cuman bisa ngasihh iniii sayaangg engga seberapaa sayaangg, yang pentingg kann akuu ngasihnyaa spesiall buatt sayaangg dan hanyaa untukkk kamuuu sayaangg, nantii akuu bukanyaa sebelum berangkat kerumah kamuu sayangg.
+
+sayaangggg, sekalii lagii terimakasii yaa sayaangg sudah menjadi wanita hebat sayangg yangg mauu berusahaa dan mendengerkan nasehat akuu jugaa sayaangg, dann menyayangii akuuu setuluuss hatii kamuuu benerr tidaa sayaanggg, akuu selaluu sayaangg samaa kamuuu, akuu bakall selalluuu support kamuu sayaangg, akuu dukung pilihan sayaangg dan aku percaya sayaangg pastii bisaa, sayaangg sudaa menjadi wanita yang sedikiit lagii menjadi dewasaa sayaangg, sedikiitt yaaa wkwkkw, engga apaa kokk sayaangg kann masii masa pertumbuhan dan sayaang baaru tahu apa arti dwasa dalam kurun waktu 1/2 tahunn pastii sayangg lebih tau apa arti dewasa dan saling mengerti saling menghargai sayaangg, jika semuanya jahat sama kamuu aku bakalann selaluu baikk samaa kamuu sayaangg akuu selalu ada di sisi kamuu sayaangg, tinggal bilang ajaa "sayaangg ituu ada yang nakall", nanti aku langsung sigapp sayangg tenang sajaa, yang penting jangan balas dendam yang kaya gimana gituu sayaangg, sayangg nalas dendam nya dengan cara grow up yourself sayanngg kasii tau mereka bahwa kamu itu adalah wanita hebat sayaang karena aku selalu mengagumi mu sayaangg dalam unsur kamuu adalah wanita sayaangg, semogaa sayaang pahamm apa yang aku bilangg yaa sayaang akuuu tetepp semangatt dan jalanin hidup dengan cara menikmati proses sayaangg, jadi berpikirnya tuhh ginii sayaangg, contoh"duhh capee bangett yaa jualan ditambah ada tugas lagi, gapapaa dehh kalo aku terus berusaha pasti nanti bisa bantuin mama papa, tugasnya nanti malem aku kerjainn pasti bisaa seleseeii ayoo semangatt " gituu sayaangg idamann banget sii ituu sayaangg aku makin jatuh cinta kalo sayang berpikiran seperti itu dari dalam hati sayaangg, aku percaya kokk pasti sayangg bisaa sayaangg, 
+ikan emas di dalem kolam
+ikan hiu melayang layang
+dari lubuk hati yang paling dalam
+iloveeyouu sayaangg
+            </div>
+            <br>
+            <button class="btn" style="width: 100%;" onclick="finishLetter()">Selesai Baca ❤️</button>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA LOGIN ---
+        const VALID_NAME = "jelita nurul afifah";
+        const VALID_PASS = "12122024";
+
+        // --- NAVIGATION LOGIC ---
+        function nextPage(currentId, nextId) {
+            const current = document.getElementById(currentId);
+            const next = document.getElementById(nextId);
+
+            // Animasi keluar (Fade Out)
+            current.style.opacity = '0';
+            current.style.transform = 'translateY(-20px)';
+            
+            setTimeout(() => {
+                current.classList.remove('active');
+                next.classList.add('active');
+                
+                // === BAGIAN INI YANG DIUPDATE ===
+                // Kalau masuk ke halaman game, jalankan Puzzlenya
+                if (nextId === 'page-game') {
+                    initPuzzle(); 
+                }
+                // ================================
+
+                // Animasi masuk (Fade In)
+                setTimeout(() => {
+                    next.style.opacity = '1';
+                    next.style.transform = 'translateY(0)';
+                }, 50);
+
+                // Kalau masuk halaman penutup, jalankan konfeti
+                if(nextId === 'page-closing') {
+                    startConfetti();
+                }
+            }, 500);
+        }
+        // --- LOGIN FUNCTION ---
+        function handleLogin() {
+            const nameInput = document.getElementById('input-name').value.trim().toLowerCase();
+            const passInput = document.getElementById('input-pass').value.trim();
+            const errorMsg = document.getElementById('login-error');
+
+            if (nameInput === VALID_NAME && passInput === VALID_PASS) {
+                // LOGIN BERHASIL
+                errorMsg.style.display = 'none';
+                
+                // NYALAKAN MUSIK DISINI
+                playMusic(); 
+
+                // PINDAH KE SURAT CINTA
+                nextPage('page-login', 'page-letter'); 
+            } else {
+                // LOGIN GAGAL
+                errorMsg.style.display = 'block';
+                errorMsg.innerText = "Nama atau Password salah sayang 😢";
+                shakeInput();
+            }
+        }
+
+        // --- MOVING BUTTON LOGIC (REVISI) ---
+        function moveButton(btn) {
+            // Ambil elemen pembungkus (kotak kaca)
+            const card = document.getElementById('card-love');
+            
+            // Ubah posisi tombol jadi absolute agar bisa lari bebas di dalam kotak
+            // Kita set ini di JS biar pas awal tampil posisinya rapi dulu
+            btn.style.position = 'absolute';
+
+            // Hitung batas maksimal area gerak (Lebar Card - Lebar Tombol)
+            // Dikurang 30px lagi biar ga terlalu mepet pinggir
+            const maxX = card.clientWidth - btn.offsetWidth - 30;
+            const maxY = card.clientHeight - btn.offsetHeight - 30;
+
+            // Pastikan nilai tidak negatif (safety)
+            const safeX = Math.max(0, maxX);
+            const safeY = Math.max(0, maxY);
+
+            // Acak posisi baru
+            const randomX = Math.floor(Math.random() * safeX);
+            const randomY = Math.floor(Math.random() * safeY);
+
+            // Terapkan posisi baru (gunakan left & top, bukan transform)
+            // Ditambah padding sedikit biar ga nempel pojok kiri atas
+            btn.style.left = (randomX + 15) + 'px';
+            btn.style.top = (randomY + 15) + 'px';
+        }
+
+        // --- LETTER LOGIC ---
+        function openLetter() {
+            const envelope = document.getElementById('envelope');
+            const modal = document.getElementById('letter-modal');
+            
+            envelope.classList.add('open');
+            
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 800);
+        }
+
+        function closeLetter() {
+            document.getElementById('letter-modal').classList.remove('show');
+            document.getElementById('envelope').classList.remove('open');
+        }
+
+        function finishLetter() {
+            closeLetter();
+            setTimeout(() => {
+                nextPage('page-letter', 'page-gametrans');
+            }, 500);
+        }
+        /* --- LOGIKA PUZZLE GESER (3x3) --- */
+        const boardSize = 3; // 3x3
+        let tiles = []; // Menyimpan urutan angka
+        let emptyTile = { row: 2, col: 2 }; // Posisi kosong awal (pojok kanan bawah)
+        let isSolved = false;
+
+        function initPuzzle() {
+            const board = document.getElementById('puzzle-board');
+            board.innerHTML = '';
+            tiles = [];
+            isSolved = false;
+            document.getElementById('game-feedback').innerText = "Semangat susunnya cantik! ❤️";
+
+            // 1. Buat Array Grid yang Benar [0, 1, 2, ..., 8]
+            // Angka 8 adalah kotak kosong
+            let correctOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+            
+            // 2. Render Awal (Kondisi Teracak)
+            // Kita acak dengan cara mensimulasikan gerakan valid agar puzzle PASTI bisa diselesaikan
+            tiles = [...correctOrder]; // Copy array
+            
+            // Render Tiles ke HTML
+            renderBoard();
+
+            // Acak otomatis (Shuffle) setelah delay dikit biar keliatan
+            setTimeout(() => {
+                shuffleBoard();
+            }, 1000);
+        }
+
+        function renderBoard() {
+            const board = document.getElementById('puzzle-board');
+            board.innerHTML = '';
+
+            tiles.forEach((tileIndex, positionIndex) => {
+                const piece = document.createElement('div');
+                piece.classList.add('puzzle-piece');
+
+                // Hitung koordinat baris & kolom saat ini
+                const row = Math.floor(positionIndex / boardSize);
+                const col = positionIndex % boardSize;
+
+                // Jika ini adalah kotak kosong (angka 8)
+                if (tileIndex === 8) {
+                    piece.classList.add('empty');
+                    piece.style.cursor = 'default';
+                } else {
+                    // Hitung posisi background gambar asli berdasarkan index aslinya
+                    // Supaya gambar terpotong sesuai urutan
+                    const originalRow = Math.floor(tileIndex / boardSize);
+                    const originalCol = tileIndex % boardSize;
+                    
+                    // Geser background position (negatif)
+                    const posX = -(originalCol * 100); 
+                    const posY = -(originalRow * 100);
+                    
+                    piece.style.backgroundPosition = `${posX}px ${posY}px`;
+                    
+                    // Tambahkan event klik buat geser
+                    piece.onclick = () => moveTile(positionIndex);
+                }
+
+                board.appendChild(piece);
+            });
+        }
+
+        function moveTile(currentIndex) {
+            if (isSolved) return;
+
+            // Cari posisi kosong ada di index mana di array tiles
+            const emptyIndex = tiles.indexOf(8);
+
+            // Hitung koordinat (Baris, Kolom)
+            const currentRow = Math.floor(currentIndex / boardSize);
+            const currentCol = currentIndex % boardSize;
+            const emptyRow = Math.floor(emptyIndex / boardSize);
+            const emptyCol = emptyIndex % boardSize;
+
+            // Cek apakah bersebelahan (atas, bawah, kiri, kanan)
+            const isAdjacent = Math.abs(currentRow - emptyRow) + Math.abs(currentCol - emptyCol) === 1;
+
+            if (isAdjacent) {
+                // Tukar posisi di array
+                [tiles[currentIndex], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[currentIndex]];
+                
+                // Render ulang
+                renderBoard();
+                
+                // Cek Menang
+                checkWin();
+            }
+        }
+
+        function shuffleBoard() {
+            // Lakukan 100 gerakan acak yang valid
+            // Ini menjamin puzzle BISA diselesaikan (solvable)
+            let count = 0;
+            const interval = setInterval(() => {
+                const emptyIndex = tiles.indexOf(8);
+                const validMoves = [];
+                
+                const row = Math.floor(emptyIndex / boardSize);
+                const col = emptyIndex % boardSize;
+
+                // Cek tetangga yang bisa digeser ke kotak kosong
+                if (row > 0) validMoves.push(emptyIndex - 3); // Atas
+                if (row < 2) validMoves.push(emptyIndex + 3); // Bawah
+                if (col > 0) validMoves.push(emptyIndex - 1); // Kiri
+                if (col < 2) validMoves.push(emptyIndex + 1); // Kanan
+
+                // Pilih satu acak
+                const randomMove = validMoves[Math.floor(Math.random() * validMoves.length)];
+                
+                // Tukar (tanpa cek win)
+                [tiles[randomMove], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[randomMove]];
+                
+                renderBoard();
+                count++;
+
+                if (count >= 20) { // Berhenti setelah 20 kali acak
+                    clearInterval(interval);
+                    isSolved = false; // Mulai main
+                }
+            }, 50); // Kecepatan acak
+        }
+
+        // Cari function checkWin() yang lama, ganti isinya jadi ini:
+        function checkWin() {
+            const isCorrect = tiles.every((val, index) => val === index);
+            
+            if (isCorrect) {
+                isSolved = true;
+                document.getElementById('game-feedback').innerText = "Yeayy Puzzle Selesai! 😍";
+                
+                // Munculkan gambar utuh
+                const emptyPiece = document.querySelector('.puzzle-piece.empty');
+                if(emptyPiece) {
+                    emptyPiece.style.background = "url('foto-puzzle.jpg')";
+                    emptyPiece.style.backgroundSize = "300px 300px";
+                    emptyPiece.style.backgroundPosition = "100% 100%"; 
+                    emptyPiece.classList.remove('empty');
+                }
+                
+                setTimeout(() => {
+                    // PINDAH KE QUIZ (Bukan page-gift lagi)
+                    nextPage('page-game', 'page-quiz'); 
+                    initQuiz(); // Jalankan Quiz
+                }, 1500);
+            }
+        }
+
+        // --- MUSIC LOGIC ---
+        function playMusic() {
+            const audio = document.getElementById('bg-music');
+            audio.play().catch(e => console.log("Audio autoplay blocked need interaction"));
+        }
+        
+        function toggleMusic() {
+            const audio = document.getElementById('bg-music');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        // --- CONFETTI LOGIC ---
+        function startConfetti() {
+            const canvas = document.getElementById('confetti');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#ff9a9e', '#fad0c4', '#fbc2eb', '#a18cd1', '#ffecd2'];
+
+            function Particle() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 8 + 4;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 2 - 1;
+
+                this.update = function() {
+                    this.y += this.speedY;
+                    this.x += this.speedX;
+                    if (this.y > canvas.height) {
+                        this.y = -20;
+                        this.x = Math.random() * canvas.width;
+                    }
+                }
+
+                this.draw = function() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+        /* --- LOGIKA QUIZ --- */
+        // ATUR PERTANYAAN DISINI
+        const quizData = [
+            {
+                question: "Apa makanan kesukaan aku?",
+                options: ["Nasi Goreng", "Mie Ayam"],
+                correct: 1 // 0 untuk A (Nasgor), 1 untuk B (Mie Ayam). GANTI SESUAI FAKTA!
+            },
+            {
+                question: "Tanggal berapa kita pertama kali jalan bareng?",
+                options: ["12 Desember", "14 Februari"],
+                correct: 0 // 0 untuk A (12 Des), 1 untuk B (14 Feb). GANTI SESUAI FAKTA!
+            },
+            {
+                question: "Siapa yang biasanya ngambek duluan?",
+                options: ["Aku", "Kamu"],
+                correct: 1 // 0 untuk A, 1 untuk B.
+            }
+        ];
+
+        let currentQuizIndex = 0;
+
+        function initQuiz() {
+            currentQuizIndex = 0;
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const data = quizData[currentQuizIndex];
+            document.getElementById('quiz-question').innerText = data.question;
+            const optionsDiv = document.getElementById('quiz-options');
+            optionsDiv.innerHTML = ''; // Reset tombol
+
+            // Buat tombol jawaban A dan B
+            data.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.innerText = option;
+                btn.classList.add('quiz-btn');
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsDiv.appendChild(btn);
+            });
+
+            document.getElementById('quiz-feedback').innerText = "";
+        }
+
+        function checkAnswer(selectedIndex, btnElement) {
+            const data = quizData[currentQuizIndex];
+
+            if (selectedIndex === data.correct) {
+                // JIKA BENAR
+                btnElement.style.background = "#4CAF50"; // Warna Hijau
+                btnElement.style.color = "white";
+                btnElement.style.borderColor = "#4CAF50";
+                document.getElementById('quiz-feedback').innerText = "Yeyy Beneerr! 😍";
+                
+                // Tunggu sebentar lalu lanjut soal berikutnya
+                setTimeout(() => {
+                    currentQuizIndex++;
+                    if (currentQuizIndex < quizData.length) {
+                        loadQuestion();
+                    } else {
+                        // Kalo soal habis, pindah ke Reward
+                        nextPage('page-quiz', 'page-reward');
+                        startConfetti(); // Rayakan!
+                    }
+                }, 800);
+
+            } else {
+                // JIKA SALAH
+                btnElement.classList.add('wrong');
+                document.getElementById('quiz-feedback').innerText = "Salah wlee 😜 Coba lagi!";
+            }
+        }
+        /* --- LOGIKA MUSIK --- */
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.querySelector('.music-control');
+        let isPlaying = false;
+
+        function playMusic() {
+            music.volume = 0.5; // Set volume 50% biar ga kaget
+            music.play().then(() => {
+                isPlaying = true;
+                musicBtn.innerHTML = "🔊"; // Ikon nyala
+                musicBtn.style.animationPlayState = "running";
+            }).catch(error => {
+                console.log("Autoplay dicegah browser, perlu interaksi user.");
+            });
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+                musicBtn.innerHTML = "🔇"; // Ikon mati
+                musicBtn.style.animation = "none"; // Stop animasi
+            } else {
+                music.play();
+                isPlaying = true;
+                musicBtn.innerHTML = "🔊";
+                musicBtn.style.animation = "pulseMusic 2s infinite";
+            }
+        }
+        /* --- LOGIKA RATING (FIXED) --- */
+        function giveRating(n) {
+            console.log("Bintang diklik: " + n); // Cek di console kalau perlu
+            
+            // Ambil elemen
+            const stars = document.querySelectorAll('.star');
+            const text = document.getElementById('rating-text');
+            
+            // Warnai bintang
+            stars.forEach((star, index) => {
+                if (index < n) {
+                    star.classList.add('selected'); // Jadi Kuning
+                } else {
+                    star.classList.remove('selected'); // Jadi Abu
+                }
+            });
+
+            // Ubah Teks Reaksi
+            const messages = [
+                "Yah kok 1 doang? 😭 Maafin aku ya...",    // 1 Bintang
+                "Kurang bagus ya? Nanti aku perbaiki 🥺",   // 2 Bintang
+                "Lumayan ya? Makasih sayang ❤️",            // 3 Bintang
+                "Aww makasih! Seneng deh kamu suka 🥰",     // 4 Bintang
+                "WAAA MAKASIH! I Love You More!! 😍🌟💖"    // 5 Bintang
+            ];
+            
+            // Tampilkan pesan (n-1 karena array mulai dari 0)
+            if (text) {
+                text.innerText = messages[n - 1];
+                text.style.color = "#d46a7e";
+                text.style.fontWeight = "bold";
+            }
+
+            // Efek tambahan kalau bintang 5
+            if (n === 5) {
+                triggerConfetti(); // Panggil confetti kalau ada
+            }
+        }
+
+        // Fungsi Confetti Sederhana (Jaga-jaga kalau belum ada)
+        function triggerConfetti() {
+            // Kalau kamu pakai library confetti, biarkan ini memanggil library itu.
+            // Kalau tidak, ini efek getar simpel sebagai tanda sukses:
+            const card = document.querySelector('#page-reward .glass-card');
+            if(card) {
+                card.style.animation = "shake 0.5s";
+                setTimeout(() => card.style.animation = "", 500);
+            }
+        }
+        /* --- LOGIKA KIRIM KE WHATSAPP --- */
+        function kirimKeWA() {
+            // 1. Ambil isi pesan dari kotak
+            const pesan = document.getElementById('pesan-wa').value;
+
+            // 2. Cek kalau kosong
+            if (pesan.trim() === "") {
+                alert("Isi dulu pesannya dong sayaang 🥺");
+                return;
+            }
+
+            // 3. Nomor WA Kamu (Format 628...)
+            const nomorWA = "6282133737023"; 
+
+            // 4. Format pesan biar rapi
+            // %0A itu kode untuk Enter (Baris baru)
+            const textEncoded = encodeURIComponent(pesan);
+            const finalMsg = `Hai Sayang! Aku udah liat websitenya, bagus banget! ❤️%0A%0AIsi Pesan Aku:%0A${textEncoded}`;
+
+            // 5. Buka Aplikasi WA
+            window.open(`https://wa.me/${nomorWA}?text=${finalMsg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
